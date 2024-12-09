@@ -4,7 +4,6 @@
 @import 'tailwindcss/utilities' layer(tw_utilities);
 @import '@mantine/core/styles.layer.css' layer(mantine);
 
-/* Custom CSS variables for ShadCN */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -70,5 +69,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
   }
 }

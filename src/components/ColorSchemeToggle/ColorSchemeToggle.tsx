@@ -1,13 +1,13 @@
-import { Button, Group, useMantineColorScheme } from '@mantine/core';
+import { Button, Group } from '@mantine/core';
+import { useTheme } from '@/components/theme-provider';
 
 export function ColorSchemeToggle() {
-  const { setColorScheme } = useMantineColorScheme();
+  const { setTheme } = useTheme();
 
   return (
     <Group justify="center" mt="xl">
-      <Button onClick={() => setColorScheme('light')}>Light</Button>
-      <Button onClick={() => setColorScheme('dark')}>Dark</Button>
-      <Button onClick={() => setColorScheme('auto')}>Auto</Button>
+      <Button onClick={() => setTheme('light')}>Light</Button>
+      <Button onClick={() => setTheme('dark')}>Dark</Button>
     </Group>
   );
 }
