@@ -1,6 +1,10 @@
 'use client';
 
+import { useEffect } from 'react';
 import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from 'store/store';
+import { Button, UnstyledButton } from '@mantine/core';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -28,6 +32,19 @@ export function NavUser({
   };
 }) {
   const { isMobile } = useSidebar();
+  const navigate = useNavigate();
+  const token = useAuthStore((state) => state.token);
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/');
+    }
+  }, [token, navigate]);
+
+  const handleLogout = () => {
+    useAuthStore.getState().setToken('');
+    navigate('/');
+  };
 
   return (
     <SidebarMenu>
@@ -51,7 +68,7 @@ export function NavUser({
           </DropdownMenuTrigger>
           <DropdownMenuContent
             className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-            side={isMobile ? 'bottom' : 'right'}
+            side={isMobile ? 'bottom' : 'bottom'}
             align="end"
             sideOffset={4}
           >
@@ -90,9 +107,15 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LogOut />
-              Log out
+            <DropdownMenuItem className="p-0">
+              <Button
+                variant="ghost"
+                className="w-full justify-start gap-2 px-2 py-1.5 text-destructive hover:bg-destructive/10 hover:text-destructive"
+                onClick={handleLogout}
+              >
+                <LogOut className="size-4" />
+                Logout
+              </Button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

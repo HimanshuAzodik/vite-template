@@ -1,16 +1,16 @@
-/* Import necessary CSS files */
 @import 'path/to/shadcn/components.css';
 
-/* Define required CSS classes */
 .dashboard-layout {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+  flex: 1 1 auto;
 }
 
 .main-content {
-  flex: 1;
   padding: 16px;
   overflow-y: auto;
+  width: 100%;
 }
 
 @layer base {
