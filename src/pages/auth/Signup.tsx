@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useAuthStore } from 'store/store';
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -28,10 +29,8 @@ const Signup = () => {
     
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
-        localStorage.setItem('token', data.token);
+           useAuthStore.getState().setToken(data.token);
         const token = data.token
-        console.log({token});
         navigate('/dashboard');
       } else {
         const error = await response.json();

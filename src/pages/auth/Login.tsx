@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useAuthStore } from 'store/store';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -27,10 +28,8 @@ const Login = () => {
       
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        useAuthStore.getState().setToken(data.token);
         localStorage.setItem('token', data.token);
-        const token = data.token
-        console.log({token});
         
         navigate('/dashboard');
       } else {

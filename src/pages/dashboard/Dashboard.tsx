@@ -1,8 +1,13 @@
 import { Button } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "store/store";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    useAuthStore.getState().setToken('');
+    navigate('/');
   };
   return <div>
 
