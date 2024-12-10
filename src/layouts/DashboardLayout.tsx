@@ -1,10 +1,17 @@
 import React, { ReactNode } from 'react';
+import { AppSidebar } from '@/components/dashboard/app-sidebar';
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="dashboard-layout">
-      <nav>{/* Add dashboard navigation */}</nav>
-      <main>{children}</main>
+      <SidebarProvider>
+        <AppSidebar />
+        <main>
+          <SidebarTrigger />
+          {children}
+        </main>
+      </SidebarProvider>
     </div>
   );
 };

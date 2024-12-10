@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from 'store/store';
 import { Button } from '@mantine/core';
+import DashboardLayout from '@/layouts/DashboardLayout';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -10,9 +11,9 @@ const Dashboard = () => {
     navigate('/');
   };
   return (
-    <div>
+    <DashboardLayout>
       <Button onClick={handleLogout}>Logout</Button>
-    </div>
+    </DashboardLayout>
   );
 };
 
