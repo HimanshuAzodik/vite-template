@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthStore } from 'store/store';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
-import { useAuthStore } from 'store/store';
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -18,7 +18,6 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-
       const response = await fetch('http://127.0.0.1:8000/api/register', {
         method: 'POST',
         headers: {
@@ -26,23 +25,19 @@ const Signup = () => {
         },
         body: JSON.stringify({ name, email, password, password_confirmation: confirmPassword }),
       });
-    
+
       if (response.ok) {
         const data = await response.json();
-           useAuthStore.getState().setToken(data.token);
-        const token = data.token
+        useAuthStore.getState().setToken(data.token);
+        const token = data.token;
         navigate('/dashboard');
       } else {
         const error = await response.json();
         console.log(error);
       }
-
     } catch (error) {
       console.log(error);
-      
     }
-
-
   };
 
   return (
