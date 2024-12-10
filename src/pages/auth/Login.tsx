@@ -11,9 +11,41 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/dashboard');
+
+
+    try {
+
+      const response = await fetch('http://127.0.0.1:8000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });  
+      
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        localStorage.setItem('token', data.token);
+        const token = data.token
+        console.log({token});
+        
+        navigate('/dashboard');
+      } else {
+        const error = await response.json();
+        console.log(error);
+      }
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+
+
+    
+
   };
 
   return (

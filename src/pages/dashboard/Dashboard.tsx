@@ -1,5 +1,13 @@
+import { Button } from "@mantine/core";
+
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+  };
+  return <div>
+
+    <Button onClick={handleLogout}>Logout</Button>
+  </div>;
 };
 
 export default Dashboard;
