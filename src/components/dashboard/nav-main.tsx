@@ -1,10 +1,10 @@
 'use client';
 
 import { ChevronRight, type LucideIcon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import {
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -27,6 +27,7 @@ export function NavMain({
     }[];
   }[];
 }) {
+  const navigate = useNavigate();
   return (
     <SidebarGroup>
       <SidebarMenu>
@@ -39,7 +40,14 @@ export function NavMain({
           >
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip={item.title}>
+                <SidebarMenuButton
+                  tooltip={item.title}
+                  onClick={() => {
+                    if (!item.items) {
+                      navigate(item.url);
+                    }
+                  }}
+                >
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
                   {item.items && (

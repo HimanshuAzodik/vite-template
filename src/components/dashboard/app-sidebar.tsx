@@ -20,6 +20,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar';
+import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
 
 const data = {
   user: {
@@ -51,15 +52,21 @@ const data = {
       icon: SquareTerminal,
     },
     {
+      title: 'Categories',
+      url: '/dashboard/categories',
+      icon: GalleryVerticalEnd,
+    },
+    {
       title: 'Orders',
       url: '/dashboard/orders',
       icon: Bot,
     },
     {
       title: 'Transactions',
-      url: '#',
+      url: '/dashboard/transactions',
       icon: BookOpen,
     },
+
     {
       title: 'Settings',
       url: '#',
@@ -95,7 +102,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <div className="flex items-center justify-between px-2">
+          <h1 className="font-bold">Azodik</h1>
+          <ColorSchemeToggle />
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />

@@ -1,7 +1,12 @@
 import React from 'react';
+import { TransactionsPage } from '@/components/DashbaordContents/Transactions';
 
 const Transactions = () => {
-  return <div>Transactions</div>;
+  return (
+    <div>
+      <TransactionsPage />
+    </div>
+  );
 };
 
 export default Transactions;
