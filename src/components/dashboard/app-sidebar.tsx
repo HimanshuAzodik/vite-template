@@ -6,15 +6,11 @@ import {
   BookOpen,
   Bot,
   Command,
-  Frame,
   GalleryVerticalEnd,
-  Map,
-  PieChart,
   Settings2,
   SquareTerminal,
 } from 'lucide-react';
 import { NavMain } from '@/components/dashboard/nav-main';
-import { NavProjects } from '@/components/dashboard/nav-projects';
 import { NavUser } from '@/components/dashboard/nav-user';
 import { TeamSwitcher } from '@/components/dashboard/team-switcher';
 import {
@@ -51,12 +47,12 @@ const data = {
   navMain: [
     {
       title: 'Products',
-      url: '#',
+      url: '/dashboard/products',
       icon: SquareTerminal,
     },
     {
       title: 'Orders',
-      url: '#',
+      url: '/dashboard/orders',
       icon: Bot,
     },
     {
@@ -74,15 +70,20 @@ const data = {
           url: '#',
         },
         {
-          title: 'Team',
+          title: ' Notifications',
+          url: '#',
+        },
+        {
+          title: 'Security',
           url: '#',
         },
         {
           title: 'Billing',
           url: '#',
         },
+
         {
-          title: 'Limits',
+          title: 'Api Keys',
           url: '#',
         },
       ],

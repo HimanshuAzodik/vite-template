@@ -1,7 +1,6 @@
 import '@mantine/core/styles.css';
 
 import { useEffect } from 'react';
-import { set } from 'react-hook-form';
 import { useAuthStore } from 'store/store';
 import { MantineProvider } from '@mantine/core';
 import { ThemeProvider, useTheme } from '@/components/theme-provider';
@@ -34,6 +33,20 @@ function ThemeSync({ children }: { children: React.ReactNode }) {
     <MantineProvider
       theme={{
         ...theme,
+        colors: {
+          dark: [
+            'var(--shadcn-dark-background-color)',
+            'var(--shadcn-dark-background-color)',
+            'var(--shadcn-dark-background-color)',
+            'var(--shadcn-dark-background-color)',
+            'var(--shadcn-dark-background-color)',
+            'var(--shadcn-dark-background-color)',
+            'var(--shadcn-dark-background-color)',
+            'var(--shadcn-dark-background-color)',
+            'var(--shadcn-dark-background-color)',
+            'var(--shadcn-dark-background-color)',
+          ],
+        },
       }}
       defaultColorScheme={currentTheme}
     >

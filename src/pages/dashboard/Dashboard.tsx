@@ -9,7 +9,7 @@ const Dashboard = () => {
   return (
     <DashboardLayout>
       <div className="w-full flex items-center justify-between  p-4">
-        <h1>Dashboard</h1>
+        <h1>Layout</h1>
         <div className="flex items-center justify-center">
           <ColorSchemeToggle />
         </div>

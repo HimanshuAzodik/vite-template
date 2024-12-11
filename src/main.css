@@ -42,7 +42,7 @@
   }
 
   [data-mantine-color-scheme='dark'] {
-    --background: 0 0% 4%;
+    --background: var(--shadcn-dark-background-color);
     --foreground: 0 0% 98%;
     --card: 0 0% 7%;
     --card-foreground: 0 0% 98%;
