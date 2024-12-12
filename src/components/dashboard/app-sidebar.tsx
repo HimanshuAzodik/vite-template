@@ -87,6 +87,16 @@ const data = {
         {
           title: 'Billing',
           url: '#',
+          items: [
+            {
+              title: 'Invoices',
+              url: '#',
+            },
+            {
+              title: 'Payment Methods',
+              url: '#',
+            },
+          ],
         },
 
         {

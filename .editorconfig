@@ -1,0 +1,8 @@
+# Top-most EditorConfig file
+root = true
+
+# Set default settings for all files
+[*]
+end_of_line = lf
+
+quote_type = single
